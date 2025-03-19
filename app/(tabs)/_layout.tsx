@@ -23,20 +23,23 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveBackgroundColor: "White",
         tabBarInactiveBackgroundColor:"Black",
-
       }}>
       <Tabs.Screen
-        name="old maps"
+        name="index"
         options={{
           title: 'Old Maps',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerTransparent: true,
+          headerShown: false,
         }}
       />
       <Tabs.Screen
-        name="new maps"
+        name="newMaps"
         options={{
           title: 'New Maps',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerTransparent: true,
+          headerShown: false,
         }}
       />
     </Tabs>
