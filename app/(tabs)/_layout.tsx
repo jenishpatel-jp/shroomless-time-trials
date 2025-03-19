@@ -21,36 +21,21 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        tabBarActiveBackgroundColor: "White",
+        tabBarInactiveBackgroundColor:"Black",
+
       }}>
       <Tabs.Screen
-        name="index"
+        name="old maps"
         options={{
-          title: 'Tab One',
+          title: 'Old Maps',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="new maps"
         options={{
-          title: 'Tab Two',
+          title: 'New Maps',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
