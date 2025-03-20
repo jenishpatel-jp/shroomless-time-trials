@@ -1,11 +1,13 @@
 import { View, Image } from "react-native";
 import { StyleSheet } from "react-native";
 
-const MapContainer = () => {
+type MapContainerProps = {image: any}
+
+const MapContainer = ({ image }:MapContainerProps ) => {
   return (
     <View style={styles.container}> 
         <Image 
-            source={require('@/assets/images/Old Maps/Mushroom Cup/Mario Kart Stadium.png')}       
+            source={image}       
             style={styles.image}
         />
     </View>

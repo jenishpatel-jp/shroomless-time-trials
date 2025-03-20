@@ -1,12 +1,21 @@
 import { StyleSheet } from 'react-native';
 import { View } from '@/components/defaultComponents/Themed';
 import MapContainer from '@/components/mapContainer/mapContainer';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { oldMaps } from '@/utils/oldMapUtils';
+import { FlatList } from 'react-native';
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
-      <MapContainer />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <FlatList 
+          data={oldMaps}
+          renderItem={({item}) => <MapContainer image={item.image} />}
+          keyExtractor={(item) => item.name}
+        />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
