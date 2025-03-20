@@ -23,6 +23,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'pink',
         width: 320,
         height: 220,
+        margin: 10,
+        borderRadius: 10,
     },
     image: {
         width: 300,
