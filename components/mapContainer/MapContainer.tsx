@@ -19,14 +19,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'pink',
-        padding: 10,
-        height: 300,
-        width: 300,
+        width: 320,
+        height: 220,
     },
     image: {
-        width: 200,
-        height: 300,
-        margin: 10,
-        padding: 10,
+        width: 300,
+        height: 200,
     }
 })

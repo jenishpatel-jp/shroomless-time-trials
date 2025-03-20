@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
 import { View } from '@/components/defaultComponents/Themed';
+import MapContainer from '@/components/mapContainer/mapContainer';
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
+      <MapContainer />
     </View>
   );
 }
