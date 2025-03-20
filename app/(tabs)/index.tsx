@@ -1,19 +1,9 @@
 import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/defaultComponents/EditScreenInfo';
-import { Text, View } from '@/components/defaultComponents/Themed';
-import { Image } from 'react-native';
+import { View } from '@/components/defaultComponents/Themed';
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Old maps</Text> 
-      <Image 
-        source={require('@/assets/images/Old Maps/Mushroom Cup/Mario Kart Stadium.png')}       
-        style={{ width: 200, height: 200 }}
-        resizeMode="contain"
-      />
-    
     </View>
   );
 }
@@ -23,10 +13,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    backgroundColor: 'black',
   },
   separator: {
     marginVertical: 30,
@@ -34,3 +21,5 @@ const styles = StyleSheet.create({
     width: '80%',
   },
 });
+
+

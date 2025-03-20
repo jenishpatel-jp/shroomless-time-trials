@@ -29,7 +29,6 @@ export default function TabLayout() {
         options={{
           title: 'Old Maps',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerTransparent: true,
           headerShown: false,
         }}
       />
@@ -38,7 +37,6 @@ export default function TabLayout() {
         options={{
           title: 'New Maps',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerTransparent: true,
           headerShown: false,
         }}
       />
