@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import { View, Image } from "react-native";
 import { StyleSheet } from "react-native";
 
@@ -5,12 +6,14 @@ type MapContainerProps = {image: any}
 
 const MapContainer = ({ image }:MapContainerProps ) => {
   return (
-    <View style={styles.container}> 
+    <LinearGradient 
+        colors={['#C01D6C', '#3DDAF9']}
+        style={styles.container}>
         <Image 
             source={image}       
             style={styles.image}
         />
-    </View>
+    </LinearGradient>
   )
 }
 
