@@ -11,7 +11,7 @@ export default function TabOneScreen() {
       <SafeAreaView style={styles.container}>
         <FlatList 
           data={oldMaps}
-          renderItem={({item}) => <MapContainer image={item.image} />}
+          renderItem={({item}) => <MapContainer image={item.image} name={item.name} />}
           keyExtractor={(item) => item.name}
         />
       </SafeAreaView>

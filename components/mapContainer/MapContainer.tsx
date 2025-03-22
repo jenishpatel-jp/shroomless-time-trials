@@ -1,19 +1,25 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { View, Image } from "react-native";
+import { View, Image, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
 
-type MapContainerProps = {image: any}
+type MapContainerProps = {image: any, name: string}
 
-const MapContainer = ({ image }:MapContainerProps ) => {
-  return (
-    <LinearGradient 
-        colors={['#C01D6C', '#3DDAF9']}
-        style={styles.container}>
-        <Image 
-            source={image}       
-            style={styles.image}
-        />
-    </LinearGradient>
+const MapContainer = ({ image, name }:MapContainerProps ) => {
+
+    const router = useRouter();
+    
+    return (
+        <TouchableOpacity onPress={()=> router.push({ pathname:"/map/[mapName]", params: { mapName:name } })} >
+            <LinearGradient 
+                colors={['#C01D6C', '#3DDAF9']}
+                style={styles.container}>
+                <Image 
+                    source={image}       
+                    style={styles.image}
+                />
+            </LinearGradient>
+        </TouchableOpacity>
   )
 }
 
