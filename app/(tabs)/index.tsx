@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { View } from '@/components/defaultComponents/Themed';
 import MapContainer from '@/components/mapContainer/mapContainer';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { oldMaps } from '@/utils/oldMapUtils';
