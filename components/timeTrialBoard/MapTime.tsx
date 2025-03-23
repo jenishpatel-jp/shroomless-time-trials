@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native'
 
-const MapTime = ( time: string ) => {
+const MapTime = () => {
 
   return (
     <View style={styles.container}> 
-        <Text>{time}</Text>
+        <Text style={styles.time} >1:21.078</Text>
     </View>
 
   )
@@ -16,12 +16,16 @@ const styles = StyleSheet.create({
   container: {
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: 'white',
+      backgroundColor: 'black',
       color: 'black',
-      width: 320,
-      height: 220,
-      margin: 10,
+      width: 240,
+      height: '100%',
       borderRadius: 10,
+  },
+  time: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
   }
 
 })

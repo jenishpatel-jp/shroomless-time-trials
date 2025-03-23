@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useState } from "react";
+import TimeTrialBoard from "@/components/timeTrialBoard/TimeTrialBoard";
 
 export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
@@ -14,13 +15,7 @@ export default function MapDetailsScreen(){
     return(
         <View style={styles.container}>
             <Text style={styles.title}>{mapName}</Text>
-            <TextInput 
-                style={styles.input}
-                placeholder="Enter your time"
-                value={time}
-                onChangeText={setTime}
-            />
-            <Button title="Save Time" onPress={handleSaveTime}/>
+            <TimeTrialBoard />
         </View>
     );
 
