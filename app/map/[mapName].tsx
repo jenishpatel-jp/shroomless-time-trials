@@ -7,19 +7,13 @@ export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
     const [time, setTime ] = useState("");
 
-    const handleSaveTime = () => {
-        console.log(`Time for ${mapName} is ${time}`);
-        setTime("");
-    };
-
     return(
         <View style={styles.container}>
             <Text style={styles.title}>{mapName}</Text>
             <TimeTrialBoard />
         </View>
     );
-
-}
+};
 
 const styles = StyleSheet.create({
   container: {
