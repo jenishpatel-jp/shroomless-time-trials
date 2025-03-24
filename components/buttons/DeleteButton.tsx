@@ -1,9 +1,9 @@
-import { Pressable, View } from "react-native"
+import { Pressable, View, StyleSheet } from "react-native"
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 const DeleteButton = () => {
     return (
-        <View>
+        <View style={styles.deleteButton}>
             <Pressable
                 onPress={()=>console.log('Delete')}
             >
@@ -15,3 +15,10 @@ const DeleteButton = () => {
 }
 
 export default DeleteButton
+
+const styles = StyleSheet.create({
+    deleteButton: {
+        marginRight: 10,
+    }
+
+})
