@@ -1,9 +1,15 @@
-import MapTimeContainer from "./MapTimeContainer"
+import AddTime from "./AddTime";
+import MapTimeContainer from "./MapTimeContainer";
+import { View } from "react-native";
 
 const TimeTrialBoard = () => {
 
     return (
-        <MapTimeContainer />
+        <View>
+            <MapTimeContainer />
+            <MapTimeContainer />
+            <AddTime />
+        </View>
     )
 }
 
