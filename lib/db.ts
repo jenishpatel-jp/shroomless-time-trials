@@ -48,3 +48,19 @@ export const insertSTT = async (name: string, time: string, callback?: () => voi
         throw error;
     }
 };
+
+// Delete a time trial record
+
+export const deleteSTT = async (id: number, callback?: () => void) => {
+    try {
+        const db = await openDatabase();
+        await db.runAsync('DELETE FROM stt WHERE id = ?', [id]);
+        console.log('Record successfully deleted');
+    } catch (error) {
+        console.error('Error deleting record:', error);
+        throw error;
+    }
+}
+
+// Get all time trial records
+
