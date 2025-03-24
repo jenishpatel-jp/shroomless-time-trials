@@ -7,11 +7,8 @@ const AddTime = () => {
             <TextInput 
                 placeholder="Add Time"
                 placeholderTextColor={'white'}
-                // onChangeText={setTime}
-                // value={time}
-                // style={styles.input
+                onChangeText={(text) => console.log(text)}
             />
-            
         </View>
     )
 }
