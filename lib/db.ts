@@ -63,4 +63,11 @@ export const deleteSTT = async (id: number, callback?: () => void) => {
 }
 
 // Get all time trial records
+export const getAllSTT = async () => {
+    try {
+        const db = await openDatabase();
+    } catch (error){
+        
+    }
 
+}
