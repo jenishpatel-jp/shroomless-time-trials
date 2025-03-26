@@ -10,7 +10,7 @@ export const setupSTTDatabase = async () => {
         await db.execAsync(`
             CREATE TABLE IF NOT EXISTS stt (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL,
+                map TEXT NOT NULL,
                 time TEXT NOT NULL
             );
             `);
