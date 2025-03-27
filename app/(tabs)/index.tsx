@@ -3,6 +3,11 @@ import MapContainer from '@/components/mapContainer/mapContainer';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { oldMaps } from '@/utils/oldMapUtils';
 import { FlatList } from 'react-native';
+import { useEffect, useState } from 'react';
+import { useDatabase } from '@/utils/dbFunctions';
+
+const [mapAndTimes, setMapAndTimes] = useState<Record<string, string[]>> ({});
+
 
 export default function TabOneScreen() {
   return (

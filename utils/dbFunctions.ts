@@ -1,12 +1,11 @@
-import { useSQLiteContext } from "expo-sqlite";
+import { SQLiteDatabase } from "expo-sqlite";
 
-export const useDatabase = () => {
-    const db = useSQLiteContext();
+export const useDatabase = (db: SQLiteDatabase) => {
 
     const addTime = async (map: string, time: string, callback?: ()=> void) => {
         try {
             const result = await db.runAsync(
-                'INSERT INTO sst (map, time) VALUES (?, ?);', [map, time]
+                'INSERT INTO stt (map, time) VALUES (?, ?);', [map, time]
             );
             console.log(`Time added successfully with ID: ${result.lastInsertRowId}`);
             if (callback) callback();
@@ -18,7 +17,7 @@ export const useDatabase = () => {
     const deleteTime = async (time:string, callback?: ()=> void) => {
         try {
             const result = await db.runAsync(
-                `DELETE FROM sst WHERE time = ?`, [time]
+                `DELETE FROM stt WHERE time = ?`, [time]
             );
 
             if (result.changes > 0){
@@ -42,10 +41,10 @@ export const useDatabase = () => {
 
     const getTimes = async () => {
         try {
-            const allRows: TimeRow[] = await db.getAllAsync('SELECT * FROM sst');
+            const allRows: TimeRow[] = await db.getAllAsync('SELECT * FROM stt');
             console.log('All times:', allRows);
 
-            const result: Record<string, [string][]> = {}
+            const result: Record<string, string[]> = {}
 
             allRows.forEach((row:any) => {
                 
@@ -57,7 +56,7 @@ export const useDatabase = () => {
                 }
 
                 if (time !== null){
-                    result[map].push([time]);
+                    result[map].push(time);
                 }
             });
 
