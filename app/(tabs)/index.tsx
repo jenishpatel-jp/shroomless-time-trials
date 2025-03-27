@@ -5,8 +5,15 @@ import { oldMaps } from '@/utils/oldMapUtils';
 import { FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
 import { useDatabase } from '@/utils/dbFunctions';
+import { useEvent } from 'react-native-reanimated';
+import { useSQLiteContext } from 'expo-sqlite';
 
 const [mapAndTimes, setMapAndTimes] = useState<Record<string, string[]>> ({});
+const db = useSQLiteContext()
+
+useEffect(()=> {
+  useDatabase(db)
+}, [])
 
 
 export default function TabOneScreen() {
