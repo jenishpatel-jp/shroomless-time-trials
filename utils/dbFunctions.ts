@@ -70,4 +70,5 @@ export const useDatabase = () => {
         }
     }
 
+    return { addTime, deleteTime, getTimes }
 }
