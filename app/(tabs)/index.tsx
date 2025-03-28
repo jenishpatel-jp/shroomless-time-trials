@@ -9,12 +9,12 @@ import { useEvent } from 'react-native-reanimated';
 import { useSQLiteContext } from 'expo-sqlite';
 
 const [mapAndTimes, setMapAndTimes] = useState<Record<string, string[]>> ({});
-const db = useSQLiteContext()
+const db = useSQLiteContext();
+const { addTime, deleteTime, getTimes } = useDatabase(db);
 
 useEffect(()=> {
-  useDatabase(db)
-}, [])
-
+  useDatabase(db);
+}, []);
 
 export default function TabOneScreen() {
   return (
