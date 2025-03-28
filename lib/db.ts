@@ -1,10 +1,9 @@
-import { useSQLiteContext } from 'expo-sqlite';
+import { type SQLiteDatabase } from "expo-sqlite";
 
 // Set up the database schema
 
-export const setupSTTTable = async () => {
+export const setupDatabase = async (db: SQLiteDatabase) => {
     try {
-        const db = useSQLiteContext()
         await db.execAsync('PRAGMA jounal_mode=WAL;');
 
         await db.execAsync(`
@@ -20,8 +19,4 @@ export const setupSTTTable = async () => {
         throw error
     }
 };
-
-export const getDatabase = () => {
-    return useSQLiteContext();
-}
 

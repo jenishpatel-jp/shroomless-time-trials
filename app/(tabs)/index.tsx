@@ -3,20 +3,10 @@ import MapContainer from '@/components/mapContainer/mapContainer';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { oldMaps } from '@/utils/oldMapUtils';
 import { FlatList } from 'react-native';
-import { useEffect, useState } from 'react';
-import { useDatabase } from '@/utils/dbFunctions';
-import { useEvent } from 'react-native-reanimated';
-import { useSQLiteContext } from 'expo-sqlite';
-
-const [mapAndTimes, setMapAndTimes] = useState<Record<string, string[]>> ({});
-const db = useSQLiteContext();
-const { addTime, deleteTime, getTimes } = useDatabase(db);
-
-useEffect(()=> {
-  useDatabase(db);
-}, []);
+import { useState } from 'react';
 
 export default function TabOneScreen() {
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>

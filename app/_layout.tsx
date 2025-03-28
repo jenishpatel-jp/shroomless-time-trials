@@ -8,6 +8,7 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/defaultComponents/useColorScheme';
 import { SQLiteProvider } from 'expo-sqlite';
+import { setupDatabase } from '@/lib/db';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -50,7 +51,8 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <SQLiteProvider databaseName='stt.db'>
+    <SQLiteProvider databaseName='stt' onInit={setupDatabase} >
+
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
