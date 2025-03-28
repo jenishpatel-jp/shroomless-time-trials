@@ -1,10 +1,9 @@
 import { type SQLiteDatabase } from "expo-sqlite";
 
 // Set up the database schema
-
 export const setupDatabase = async (db: SQLiteDatabase) => {
     try {
-        await db.execAsync('PRAGMA jounal_mode=WAL;');
+        await db.execAsync('PRAGMA journal_mode=WAL;');
 
         await db.execAsync(`
             CREATE TABLE IF NOT EXISTS stt (
