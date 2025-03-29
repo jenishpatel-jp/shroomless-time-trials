@@ -6,10 +6,11 @@ interface TimeTrialBoardProp {
     addTime: (map: string, time: string, callback?: ()=> void) => Promise<void>;
     deleteTime: (time:string, callback?: ()=> void)=> Promise<void>;    
     getTimes: ()=> Promise<Record<string, string[]>>;
-    mapName: string | string[]
+    mapName: string | string[];
+    mapAndTime: Record<string, string[]>
 }
 
-const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { addTime, deleteTime, getTimes, mapName } ) => {
+const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { addTime, deleteTime, getTimes, mapName, mapAndTime } ) => {
 
 
 

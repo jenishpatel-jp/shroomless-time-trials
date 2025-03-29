@@ -9,12 +9,13 @@ export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
 
     const [mapAndTime, setMapAndTime] = useState<Record<string, string[]>>({})
-    const [timeFetchTrigger, setTimeFetchTrigger] = useState(false);
+    const [trigger, setTrigger] = useState(false);
 
     // retrieve database and database functions 
     const db = useSQLiteContext()
     const { addTime, deleteTime, getTimes } = useDatabase(db);
 
+    // fetchches the map and times from the db
     const fetchTimes = async () => {
       try {
         const allMapAndTimes = await getTimes();
@@ -22,11 +23,26 @@ export default function MapDetailsScreen(){
       } catch (error){
         console.error("Error fetching map and times", error);
       }
+    };
+
+    // handles adding times to the db
+    const handleAddTime = async (map: string, time:string) => {
+      if (!time){
+        console.warn("time is empty");
+        return;
+      }
+      if (!map){
+        console.warn("map is empty")
+      }
+      await addTime(map, time, () => setTrigger((prev) => !prev))
     }
+
+    // handles deleting times to the db
  
+
     useEffect(()=> {
       fetchTimes()
-    },[timeFetchTrigger]);
+    },[trigger]);
 
     return(
         <View style={styles.container}>
@@ -36,6 +52,7 @@ export default function MapDetailsScreen(){
               deleteTime={deleteTime} 
               getTimes={getTimes} 
               mapName={mapName} 
+              mapAndTime={mapAndTime}
               />
         </View>
     );
