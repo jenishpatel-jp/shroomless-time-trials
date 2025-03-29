@@ -1,11 +1,17 @@
 import { Pressable, View, StyleSheet } from "react-native"
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
-const DeleteButton = () => {
+interface DeleteButtonProps {
+    time: string;
+    handleDeleteTime: (time: string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+    setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const DeleteButton: React.FC<DeleteButtonProps> = ( { time, handleDeleteTime, setTrigger} ) => {
     return (
         <View style={styles.deleteButton}>
             <Pressable
-                onPress={()=>console.log('Delete')}
+                onPress={()=> handleDeleteTime(time, setTrigger)}
             >
                 <FontAwesome6 name="trash-can" size={24} color="white" />
             </Pressable>

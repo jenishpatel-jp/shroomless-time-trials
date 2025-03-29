@@ -13,7 +13,7 @@ interface TimeTrialBoardProp {
 const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { singleMapName, mapAndTime, handleAddTime, handleDeleteTime, setTrigger } ) => {
 
     const listMapTimeContainer = mapAndTime[singleMapName]?.map(time => (
-        <MapTimeContainer key={time} time={time} />)) || [];
+        <MapTimeContainer key={time} time={time} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger} />)) || [];
 
     return (
         <View style={styles.container}>

@@ -4,13 +4,15 @@ import DeleteButton from "../buttons/DeleteButton";
 
 interface MapTimeContainerProp {
   time: string;
+  handleDeleteTime: (time: string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time} ) => {
+const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time, handleDeleteTime, setTrigger} ) => {
   return (
     <View style={styles.container}>
         <MapTime time={time}  />
-        <DeleteButton />
+        <DeleteButton time={time} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger} />
     </View>
   )
 }
