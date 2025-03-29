@@ -1,10 +1,14 @@
 import { View, Text, StyleSheet } from 'react-native'
 
-const MapTime = () => {
+interface MapTimeProp {
+  time: string;
+}
+
+const MapTime: React.FC<MapTimeProp> = ( { time } ) => {
 
   return (
     <View style={styles.container}> 
-        <Text style={styles.time} >1:21.078</Text>
+        <Text style={styles.time} >{time}</Text>
     </View>
 
   )

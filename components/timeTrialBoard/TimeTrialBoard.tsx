@@ -12,11 +12,13 @@ interface TimeTrialBoardProp {
 
 const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { singleMapName, mapAndTime, handleAddTime, handleDeleteTime, setTrigger } ) => {
 
-
+    const listMapTimeContainer = mapAndTime[singleMapName].map(time => {
+        <MapTimeContainer time={time} />
+    })
 
     return (
         <View style={styles.container}>
-            <MapTimeContainer />
+            
             <AddTime 
                 singleMapName={singleMapName} 
                 handleAddTime={handleAddTime}  

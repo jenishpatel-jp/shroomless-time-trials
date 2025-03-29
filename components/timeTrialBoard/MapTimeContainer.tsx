@@ -2,10 +2,14 @@ import { View, StyleSheet } from "react-native";
 import MapTime from "./MapTime";
 import DeleteButton from "../buttons/DeleteButton";
 
-const MapTimeContainer = () => {
+interface MapTimeContainerProp {
+  time: string;
+}
+
+const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time} ) => {
   return (
     <View style={styles.container}>
-        <MapTime  />
+        <MapTime time={time}  />
         <DeleteButton />
     </View>
   )
