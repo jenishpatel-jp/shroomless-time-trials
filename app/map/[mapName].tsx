@@ -7,6 +7,7 @@ import { useSQLiteContext } from "expo-sqlite";
 
 export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
+    const singleMapName = mapName as string;
 
     const [mapAndTime, setMapAndTime] = useState<Record<string, string[]>>({})
     const [trigger, setTrigger] = useState(false);
@@ -29,7 +30,7 @@ export default function MapDetailsScreen(){
     const handleAddTime = async (
       map: string, 
       time:string,
-      setTrigger: React.Dispatch<React.SetStateAction<Boolean>>
+      setTrigger: React.Dispatch<React.SetStateAction<boolean>>
     ) => {
       if (!time){
         console.warn("time is empty");
@@ -44,7 +45,7 @@ export default function MapDetailsScreen(){
     // handles deleting times to the db
     const handleDeleteTime = async ( 
       time:string,
-      setTrigger: React.Dispatch<React.SetStateAction<Boolean>>
+      setTrigger: React.Dispatch<React.SetStateAction<boolean>>
     ) => {
       await deleteTime(time, ()=> setTrigger((prev) => !prev))
     }
@@ -58,10 +59,11 @@ export default function MapDetailsScreen(){
         <View style={styles.container}>
             <Text style={styles.title}>{mapName}</Text>
             <TimeTrialBoard 
-              mapName={mapName} 
+              singleMapName={singleMapName} 
               mapAndTime={mapAndTime}
               handleAddTime={handleAddTime}
               handleDeleteTime={handleDeleteTime}
+              setTrigger={setTrigger}
 
               />
         </View>

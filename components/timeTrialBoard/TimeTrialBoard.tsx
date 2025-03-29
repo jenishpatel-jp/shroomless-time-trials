@@ -3,20 +3,25 @@ import MapTimeContainer from "./MapTimeContainer";
 import { View, StyleSheet } from "react-native";
 
 interface TimeTrialBoardProp {
-    mapName: string | string[];
+    singleMapName: string;
     mapAndTime: Record<string, string[]>;
-    handleAddTime: (map: string, time:string, setTrigger: React.Dispatch<React.SetStateAction<Boolean>>) => Promise<void>;
-    handleDeleteTime: (time: string, setTrigger: React.Dispatch<React.SetStateAction<Boolean>>) => Promise<void>;
+    handleAddTime: (map: string, time:string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+    handleDeleteTime: (time: string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+    setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { mapName, mapAndTime, handleAddTime, handleDeleteTime } ) => {
+const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { singleMapName, mapAndTime, handleAddTime, handleDeleteTime, setTrigger } ) => {
 
 
 
     return (
         <View style={styles.container}>
             <MapTimeContainer />
-            <AddTime mapName={mapName} handleAddTime={handleAddTime}  />
+            <AddTime 
+                singleMapName={singleMapName} 
+                handleAddTime={handleAddTime}  
+                setTrigger={setTrigger}
+                />
         </View>
     )
 }

@@ -3,23 +3,29 @@ import AddButton from '../buttons/AddButton'
 import { useState } from 'react';
 
 interface AddTimeProps {
-    mapName: string | string[];
-    handleAddTime: (map: string, time:string, setTrigger: React.Dispatch<React.SetStateAction<Boolean>>) => Promise<void>;
+    singleMapName: string;
+    handleAddTime: (map: string, time:string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+    setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const [time, setTime] = useState<string>("")
+const AddTime: React.FC<AddTimeProps> = ( { singleMapName, handleAddTime, setTrigger } ) => {
 
-const AddTime: React.FC<AddTimeProps> = ( { mapName, handleAddTime } ) => {
+    const [time, setTime] = useState<string>("")
 
     return (
         <View style={styles.container}> 
             <TextInput 
-                placeholder="0:00.000"
+                placeholder={time}
                 style={styles.input}
                 placeholderTextColor={'white'}
-                onChangeText={(text) => console.log(text)}
+                onChangeText={(text) => setTime}
             />
-            <AddButton  />
+            <AddButton  
+                handleAddTime={handleAddTime}
+                time={time}
+                singleMapName={singleMapName}
+                setTrigger={setTrigger}
+            />
         </View>
     )
 }

@@ -1,9 +1,19 @@
 import { Pressable, Text, StyleSheet } from "react-native"
 
-const AddButton = () => {
+interface AddButtonProps {
+    handleAddTime: (map: string, time:string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+    time: string;
+    singleMapName: string;
+    setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, singleMapName, setTrigger } ) => {
+
     return (
-        <Pressable onPress={()=>console.log('Add')} style={styles.button}>
-            <Text style={styles.text} >Add</Text>
+        <Pressable 
+            onPress={()=> handleAddTime(singleMapName, time, setTrigger) } 
+            style={styles.button}>
+                <Text style={styles.text} >Add</Text>
         </Pressable>
     )
 }
