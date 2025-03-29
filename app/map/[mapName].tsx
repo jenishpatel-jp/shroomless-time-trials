@@ -2,10 +2,15 @@ import { useLocalSearchParams } from "expo-router";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useState } from "react";
 import TimeTrialBoard from "@/components/timeTrialBoard/TimeTrialBoard";
+import { useDatabase } from "@/utils/dbFunctions";
+import { useSQLiteContext } from "expo-sqlite";
 
 export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
-    const [time, setTime ] = useState("");
+    const [mapAndTime, setMapAndTime] = useState<Record<string, string[]>>({})
+    const db = useSQLiteContext()
+
+    const { addTime, deleteTime, getTimes } = useDatabase(db)
 
     return(
         <View style={styles.container}>
