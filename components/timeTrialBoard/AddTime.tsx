@@ -18,7 +18,8 @@ const AddTime: React.FC<AddTimeProps> = ( { singleMapName, handleAddTime, setTri
                 placeholder={time}
                 style={styles.input}
                 placeholderTextColor={'white'}
-                onChangeText={(text) => setTime}
+                onChangeText={setTime}
+                value={time}
             />
             <AddButton  
                 handleAddTime={handleAddTime}
