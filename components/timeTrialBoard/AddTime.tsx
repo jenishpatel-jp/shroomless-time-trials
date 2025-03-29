@@ -1,7 +1,15 @@
 import { TextInput, View, StyleSheet } from 'react-native'
 import AddButton from '../buttons/AddButton'
+import { useState } from 'react';
 
-const AddTime = () => {
+interface AddTimeProps {
+    mapName: string | string[];
+    handleAddTime: (map: string, time:string, setTrigger: React.Dispatch<React.SetStateAction<Boolean>>) => Promise<void>;
+}
+
+const [time, setTime] = useState<string>("")
+
+const AddTime: React.FC<AddTimeProps> = ( { mapName, handleAddTime } ) => {
 
     return (
         <View style={styles.container}> 

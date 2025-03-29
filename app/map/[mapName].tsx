@@ -26,7 +26,11 @@ export default function MapDetailsScreen(){
     };
 
     // handles adding times to the db
-    const handleAddTime = async (map: string, time:string) => {
+    const handleAddTime = async (
+      map: string, 
+      time:string,
+      setTrigger: React.Dispatch<React.SetStateAction<Boolean>>
+    ) => {
       if (!time){
         console.warn("time is empty");
         return;
@@ -38,6 +42,12 @@ export default function MapDetailsScreen(){
     }
 
     // handles deleting times to the db
+    const handleDeleteTime = async ( 
+      time:string,
+      setTrigger: React.Dispatch<React.SetStateAction<Boolean>>
+    ) => {
+      await deleteTime(time, ()=> setTrigger((prev) => !prev))
+    }
  
 
     useEffect(()=> {
@@ -48,11 +58,11 @@ export default function MapDetailsScreen(){
         <View style={styles.container}>
             <Text style={styles.title}>{mapName}</Text>
             <TimeTrialBoard 
-              addTime={addTime} 
-              deleteTime={deleteTime} 
-              getTimes={getTimes} 
               mapName={mapName} 
               mapAndTime={mapAndTime}
+              handleAddTime={handleAddTime}
+              handleDeleteTime={handleDeleteTime}
+
               />
         </View>
     );
