@@ -15,7 +15,7 @@ export default function MapDetailsScreen(){
     return(
         <View style={styles.container}>
             <Text style={styles.title}>{mapName}</Text>
-            <TimeTrialBoard />
+            <TimeTrialBoard addTime={addTime} deleteTime={deleteTime} getTimes={getTimes} />
         </View>
     );
 };

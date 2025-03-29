@@ -2,7 +2,13 @@ import AddTime from "./AddTime";
 import MapTimeContainer from "./MapTimeContainer";
 import { View, StyleSheet } from "react-native";
 
-const TimeTrialBoard = () => {
+interface TimeTrialBoardProp {
+    addTime: (map: string, time: string, callback?: ()=> void) => Promise<void>;
+    deleteTime: (time:string, callback?: ()=> void)=> Promise<void>;    
+    getTimes: ()=> Promise<Record<string, string[]>>
+}
+
+const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { addTime, deleteTime, getTimes } ) => {
 
     return (
         <View style={styles.container}>
