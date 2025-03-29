@@ -47,7 +47,7 @@ export const useDatabase = (db: SQLiteDatabase) => {
             const result: Record<string, string[]> = {}
 
             allRows.forEach((row:any) => {
-                
+    
                 const map = row.map;
                 const time = row.time;
 

@@ -5,14 +5,16 @@ import { View, StyleSheet } from "react-native";
 interface TimeTrialBoardProp {
     addTime: (map: string, time: string, callback?: ()=> void) => Promise<void>;
     deleteTime: (time:string, callback?: ()=> void)=> Promise<void>;    
-    getTimes: ()=> Promise<Record<string, string[]>>
+    getTimes: ()=> Promise<Record<string, string[]>>;
+    mapName: string | string[]
 }
 
-const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { addTime, deleteTime, getTimes } ) => {
+const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { addTime, deleteTime, getTimes, mapName } ) => {
+
+
 
     return (
         <View style={styles.container}>
-            <MapTimeContainer />
             <MapTimeContainer />
             <AddTime />
         </View>

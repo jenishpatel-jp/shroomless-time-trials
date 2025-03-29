@@ -1,21 +1,42 @@
 import { useLocalSearchParams } from "expo-router";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TimeTrialBoard from "@/components/timeTrialBoard/TimeTrialBoard";
 import { useDatabase } from "@/utils/dbFunctions";
 import { useSQLiteContext } from "expo-sqlite";
 
 export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
-    const [mapAndTime, setMapAndTime] = useState<Record<string, string[]>>({})
-    const db = useSQLiteContext()
 
-    const { addTime, deleteTime, getTimes } = useDatabase(db)
+    const [mapAndTime, setMapAndTime] = useState<Record<string, string[]>>({})
+    const [timeFetchTrigger, setTimeFetchTrigger] = useState(false);
+
+    // retrieve database and database functions 
+    const db = useSQLiteContext()
+    const { addTime, deleteTime, getTimes } = useDatabase(db);
+
+    const fetchTimes = async () => {
+      try {
+        const allMapAndTimes = await getTimes();
+        setMapAndTime(allMapAndTimes)
+      } catch (error){
+        console.error("Error fetching map and times", error);
+      }
+    }
+ 
+    useEffect(()=> {
+      fetchTimes()
+    },[timeFetchTrigger]);
 
     return(
         <View style={styles.container}>
             <Text style={styles.title}>{mapName}</Text>
-            <TimeTrialBoard addTime={addTime} deleteTime={deleteTime} getTimes={getTimes} />
+            <TimeTrialBoard 
+              addTime={addTime} 
+              deleteTime={deleteTime} 
+              getTimes={getTimes} 
+              mapName={mapName} 
+              />
         </View>
     );
 };
