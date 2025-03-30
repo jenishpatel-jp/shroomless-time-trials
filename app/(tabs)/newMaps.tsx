@@ -1,13 +1,20 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { newMaps } from '@/utils/newMapUtils';
+import MapContainer from '@/components/mapContainer/mapContainer';
 
-import EditScreenInfo from '@/components/defaultComponents/EditScreenInfo';
-import { Text, View } from '@/components/defaultComponents/Themed';
 
 export default function TabTwoScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>New maps</Text>
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <FlatList 
+          data={newMaps}
+          renderItem={({item}) => <MapContainer image={item.image} name={item.name} />}
+          keyExtractor={(item) => item.name}
+        />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
