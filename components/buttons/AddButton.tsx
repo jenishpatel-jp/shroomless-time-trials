@@ -5,13 +5,14 @@ interface AddButtonProps {
     time: string;
     singleMapName: string;
     setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+    setTime: React.Dispatch<React.SetStateAction<string>>
 }
 
-const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, singleMapName, setTrigger } ) => {
+const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, singleMapName, setTrigger, setTime } ) => {
 
     return (
         <Pressable 
-            onPress={()=> handleAddTime(singleMapName, time, setTrigger) } 
+            onPress={() => handleAddTime(singleMapName, time, setTrigger)}
             style={styles.button}>
                 <Text style={styles.text} >Add</Text>
         </Pressable>

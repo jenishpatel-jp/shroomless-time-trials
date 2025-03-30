@@ -40,6 +40,7 @@ export default function MapDetailsScreen(){
         console.warn("map is empty")
       }
       await addTime(map, time, () => setTrigger((prev) => !prev))
+  
     }
 
     // handles deleting times to the db

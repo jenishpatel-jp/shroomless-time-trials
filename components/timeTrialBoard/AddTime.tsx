@@ -10,22 +10,26 @@ interface AddTimeProps {
 
 const AddTime: React.FC<AddTimeProps> = ( { singleMapName, handleAddTime, setTrigger } ) => {
 
-    const [time, setTime] = useState<string>("")
+    const [time, setTime] = useState<string>("");
+
 
     return (
         <View style={styles.container}> 
             <TextInput 
-                placeholder={time}
+                placeholder={'0:00.000'}
                 style={styles.input}
                 placeholderTextColor={'white'}
                 onChangeText={setTime}
                 value={time}
+                textAlign='center'
+                keyboardType='email-address'
             />
             <AddButton  
                 handleAddTime={handleAddTime}
                 time={time}
                 singleMapName={singleMapName}
                 setTrigger={setTrigger}
+                setTime={setTime}
             />
         </View>
     )
