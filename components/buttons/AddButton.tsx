@@ -10,9 +10,11 @@ interface AddButtonProps {
 
 const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, map, setTrigger, setTime } ) => {
 
+
     return (
         <Pressable 
             onPress={() => handleAddTime(map, time, setTrigger)}
+            onPressOut={() => setTime("")}
             style={styles.button}>
                 <Text style={styles.text}>Add</Text>
         </Pressable>

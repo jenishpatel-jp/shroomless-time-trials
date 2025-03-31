@@ -12,7 +12,6 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
 
     const [time, setTime] = useState<string>("");
 
-
     return (
         <View style={styles.container}> 
             <TextInput 
@@ -23,6 +22,8 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
                 value={time}
                 textAlign='center'
                 keyboardType='email-address'
+                maxLength={8}
+        
             />
             <AddButton  
                 handleAddTime={handleAddTime}
