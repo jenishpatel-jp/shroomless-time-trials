@@ -14,7 +14,7 @@ const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, map, setTri
         <Pressable 
             onPress={() => handleAddTime(map, time, setTrigger)}
             style={styles.button}>
-                <Text style={styles.text} >Add</Text>
+                <Text style={styles.text}>Add</Text>
         </Pressable>
     )
 }

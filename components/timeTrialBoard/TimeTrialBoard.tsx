@@ -12,14 +12,18 @@ interface TimeTrialBoardProp {
 
 const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { map, mapAndTime, handleAddTime, handleDeleteTime, setTrigger } ) => {
 
-    
+    const converToMilliseconds = (time: string) => {
+        const [minutes, seconds, milliseconds] = time.split(/[:.]/).map(Number);
+        return minutes * 60000 + seconds * 1000 + milliseconds;
+    };
 
-    const listMapTimeContainer = mapAndTime[map]?.map(time => (
-        <MapTimeContainer key={time} time={time} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger} />)) || [];
+    const sortedTimes = mapAndTime[map]?.sort((a:any, b:any) => converToMilliseconds(a)-converToMilliseconds(b)).slice(0, 5) || [];
+
+    const listMapTimeContainer = sortedTimes.map(time => <MapTimeContainer key={time} time={time} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger}/>)
 
     return (
         <View style={styles.container}>
-            { mapAndTime[map] && mapAndTime[map]?.length > 0 ? (listMapTimeContainer):(<View></View>)}
+            { sortedTimes.length > 0 ? (listMapTimeContainer):(<View></View>)}
             
             <AddTime 
                 map={map} 
