@@ -7,7 +7,7 @@ import { useSQLiteContext } from "expo-sqlite";
 
 export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
-    const singleMapName = mapName as string;
+    const map = mapName as string;
 
     const [mapAndTime, setMapAndTime] = useState<Record<string, string[]>>({})
     const [trigger, setTrigger] = useState(false);
@@ -60,7 +60,7 @@ export default function MapDetailsScreen(){
         <View style={styles.container}>
             <Text style={styles.title}>{mapName}</Text>
             <TimeTrialBoard 
-              singleMapName={singleMapName} 
+              map={map} 
               mapAndTime={mapAndTime}
               handleAddTime={handleAddTime}
               handleDeleteTime={handleDeleteTime}
