@@ -19,7 +19,6 @@
         "dark": "./assets/icons/ios-dark.png",
         "light": "./assets/icons/ios-light.png",
         "tinted": "./assets/icons/ios-tinted.png"
-
       }
     },
     "android": {
@@ -27,7 +26,8 @@
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "monochromeImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jpcodingboy.shroomlesstimetrials"
     },
     "web": {
       "bundler": "metro",
@@ -37,17 +37,27 @@
     "plugins": [
       "expo-router",
       "expo-sqlite",
-      ["expo-splash-screen",
-        { 
+      [
+        "expo-splash-screen",
+        {
           "image": "./assets/icons/splash-icon-dark.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor":"#000000"
+          "backgroundColor": "#000000"
         }
-    ]
+      ]
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "e9aabb44-1a07-4871-8e78-e3e546fc2f40"
+      }
+    },
+    "owner": "jpcodingboy"
   }
 }
