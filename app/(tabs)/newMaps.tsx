@@ -6,7 +6,7 @@ import MapContainer from '@/components/mapContainer/mapContainer';
 
 export default function TabTwoScreen() {
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider >
       <SafeAreaView style={styles.container}>
         <FlatList 
           data={newMaps}
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: "black",
   },
   title: {
     fontSize: 20,

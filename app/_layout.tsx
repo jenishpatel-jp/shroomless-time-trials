@@ -52,7 +52,6 @@ function RootLayoutNav() {
 
   return (
     <SQLiteProvider databaseName='stt' onInit={setupDatabase} >
-
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
