@@ -15,7 +15,6 @@ const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, map, setTri
         setTime("")
     }
 
-
     return (
         <Pressable 
             onPress={addTimeAndReset}
@@ -23,7 +22,7 @@ const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, map, setTri
                 <Text style={styles.text}>Add</Text>
         </Pressable>
     )
-}
+};
 
 export default AddButton
 
@@ -43,4 +42,4 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
     }
-})
+});
