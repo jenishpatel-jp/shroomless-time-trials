@@ -1,6 +1,6 @@
 import { TextInput, View, StyleSheet } from 'react-native'
 import AddButton from '../buttons/AddButton'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface AddTimeProps {
     map: string;
@@ -12,16 +12,36 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
 
     const [time, setTime] = useState<string>("");
 
+    useEffect(() => {
+        console.log("time", time)
+    }, [time]);
+
+    const formatTimeInput = (input: string) => {
+        // Remove existing ':' and '.' before formatting
+        let raw = input.replace(/[:.]/g, "");
+    
+        let formatted = raw;
+        if (raw.length >= 2) {
+            formatted = `${raw.slice(0, 1)}:${raw.slice(1)}`;
+        }
+        if (raw.length >= 5) {
+            formatted = `${formatted.slice(0, 4)}.${formatted.slice(4)}`;
+        }
+    
+        return formatted;
+    };
+
+
     return (
         <View style={styles.container}> 
             <TextInput 
                 placeholder={'0:00.000'}
                 style={styles.input}
                 placeholderTextColor={'white'}
-                onChangeText={setTime}
+                onChangeText={(text) => setTime(formatTimeInput(text))}
                 value={time}
                 textAlign='center'
-                keyboardType='email-address'
+                keyboardType='numeric'
                 maxLength={8}
         
             />
