@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import { Pressable, Text, StyleSheet } from "react-native"
 
 interface AddButtonProps {
@@ -16,11 +17,18 @@ const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, map, setTri
     }
 
     return (
-        <Pressable 
-            onPress={addTimeAndReset}
-            style={styles.button}>
-                <Text style={styles.text}>Add</Text>
-        </Pressable>
+        <LinearGradient 
+            colors={['#FF1BDC', '#2CBDFE']} 
+            style={styles.linearBorder}
+ 
+        >
+            <Pressable 
+                onPress={addTimeAndReset}
+                style={styles.button}>
+                    <Text style={styles.text}>Add</Text>
+            </Pressable>
+        </LinearGradient>
+
     )
 };
 
@@ -34,12 +42,21 @@ const styles = StyleSheet.create({
         padding: 10,
         borderColor: '#E418C5',
         borderWidth: 1,
-        width: '20%',
-        margin: 5,
+        width: '97%',
+        margin: 2,
+        height: '97%',
     },
     text: {
         color: 'white',
         fontSize: 20,
         textAlign: 'center',
-    }
+    },
+    linearBorder: {
+        height:60,
+        width: 100,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 1,
+    },
 });

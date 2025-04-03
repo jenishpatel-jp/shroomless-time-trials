@@ -1,6 +1,7 @@
 import { TextInput, View, StyleSheet } from 'react-native'
 import AddButton from '../buttons/AddButton'
 import { useEffect, useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface AddTimeProps {
     map: string;
@@ -34,17 +35,23 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
 
     return (
         <View style={styles.container}> 
-            <TextInput 
-                placeholder={'0:00.000'}
-                style={styles.input}
-                placeholderTextColor={'#009FE5'}
-                onChangeText={(text) => setTime(formatTimeInput(text))}
-                value={time}
-                textAlign='center'
-                keyboardType='numeric'
-                maxLength={8}
-        
-            />
+            <LinearGradient
+                colors={['#FF1BDC', '#2CBDFE']} 
+                style={styles.linearBorder}
+                >
+                
+                <TextInput 
+                    placeholder={'0:00.000'}
+                    placeholderTextColor={'#009FE5'}
+                    onChangeText={(text) => setTime(formatTimeInput(text))}
+                    value={time}
+                    style={styles.input}
+                    textAlign='center'
+                    keyboardType='numeric'
+                    maxLength={8}
+            
+                />
+            </LinearGradient>
             <AddButton  
                 handleAddTime={handleAddTime}
                 time={time}
@@ -63,20 +70,32 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'black',
-        height: 120,
+        height: 130,
         width: '90%',
     },
-    input: {
+    linearBorder: {
         height: 50,
         width: '100%',
-        margin: 5,
+        margin: 2,
         borderWidth: 1,
         fontSize: 20,
         color: '#009FE5',
-        borderColor: '#E418C5',
         borderRadius: 10,
         textAlign: 'center',
         backgroundBlendMode: 'darken',
         backgroundColor: 'black',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
+    input:{
+        height: '90%',
+        width: '98%',
+        margin: 2,
+        fontSize: 20,
+        color: '#009FE5',
+        borderRadius: 10,
+        textAlign: 'center',
+        backgroundBlendMode: 'darken',
+        backgroundColor: 'black',
+    }
 })
