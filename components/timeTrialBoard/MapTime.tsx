@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   time: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#009FE5',
   }
 
 })

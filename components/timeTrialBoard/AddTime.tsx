@@ -37,7 +37,7 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
             <TextInput 
                 placeholder={'0:00.000'}
                 style={styles.input}
-                placeholderTextColor={'white'}
+                placeholderTextColor={'#009FE5'}
                 onChangeText={(text) => setTime(formatTimeInput(text))}
                 value={time}
                 textAlign='center'
@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
         margin: 5,
         borderWidth: 1,
         fontSize: 20,
-        color: 'white',
-        borderColor: 'white',
+        color: '#009FE5',
+        borderColor: '#E418C5',
         borderRadius: 10,
         textAlign: 'center',
         backgroundBlendMode: 'darken',

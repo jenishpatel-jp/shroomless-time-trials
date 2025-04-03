@@ -1,6 +1,6 @@
 import AddTime from "./AddTime";
 import MapTimeContainer from "./MapTimeContainer";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 
 interface TimeTrialBoardProp {
     map: string;
@@ -17,13 +17,16 @@ const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { map, mapAndTime, handle
         return minutes * 60000 + seconds * 1000 + milliseconds;
     };
 
-    const sortedTimes = mapAndTime[map]?.sort((a:any, b:any) => converToMilliseconds(a)-converToMilliseconds(b)).slice(0, 5) || [];
+    const sortedTimes = mapAndTime[map]?.sort((a:any, b:any) => converToMilliseconds(a)-converToMilliseconds(b)) || [];
 
-    const listMapTimeContainer = sortedTimes.map(time => <MapTimeContainer key={time} time={time} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger}/>)
 
     return (
         <View style={styles.container}>
-            { sortedTimes.length > 0 ? (listMapTimeContainer):(<View></View>)}
+            <FlatList 
+                data={sortedTimes}
+                renderItem={({item}) => <MapTimeContainer time={item} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger}/>}
+                keyExtractor={(item) => item}
+            />
             
             <AddTime 
                 map={map} 
@@ -45,7 +48,7 @@ export const styles = StyleSheet.create({
         width: '90%',
         margin: 10,
         borderRadius: 10,
-        borderColor: 'white',
+        borderColor: '#E418C5',
         borderWidth: 1,
         height: '70%',
     }
