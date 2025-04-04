@@ -12,7 +12,7 @@ const MapContainer = ({ image, name }:MapContainerProps ) => {
     return (
         <TouchableOpacity onPress={()=> router.push({ pathname:"/map/[mapName]", params: { mapName:name } })} >
             <LinearGradient 
-                colors={['#C01D6C', '#3DDAF9']}
+                colors={['#FF1BDC', '#2CBDFE']}
                 style={styles.container}>
                 <Image 
                     source={image}       
