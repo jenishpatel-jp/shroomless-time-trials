@@ -92,10 +92,11 @@ const styles = StyleSheet.create({
         width: '98%',
         margin: 2,
         fontSize: 20,
-        color: '#009FE5',
+        color: '#2CBDFE',
         borderRadius: 10,
         textAlign: 'center',
         backgroundBlendMode: 'darken',
         backgroundColor: 'black',
+        fontWeight: 'bold',
     }
 })
