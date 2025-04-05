@@ -1,6 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import MapTime from "./MapTime";
 import DeleteButton from "../buttons/DeleteButton";
+import { LinearGradient } from "expo-linear-gradient";
 
 interface MapTimeContainerProp {
   time: string;
@@ -10,10 +11,15 @@ interface MapTimeContainerProp {
 
 const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time, handleDeleteTime, setTrigger} ) => {
   return (
-    <View style={styles.container}>
-        <MapTime time={time}  />
-        <DeleteButton time={time} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger} />
-    </View>
+    <LinearGradient 
+      colors={['#FF1BDC', '#2CBDFE']}
+      style={styles.linearBorder}
+    >
+      <View style={styles.container}>
+          <MapTime time={time}  />
+          <DeleteButton time={time} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger} />
+      </View>
+    </LinearGradient>
   )
 }
 
@@ -25,13 +31,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: 'black',
         color: 'black',
-        width: '90%',
-        height: 50,
-        margin: 10,
+        width: '98%',
+        height: '96%',
+        padding: 15,
         borderRadius: 10,
         flexDirection: 'row',
-        borderColor: '#E418C5',
-        borderWidth: 1,
+    },
+    linearBorder: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 10,
+      width: '100%',
+      height: 60,
+      marginVertical: 10,
+
     }
 
 })
