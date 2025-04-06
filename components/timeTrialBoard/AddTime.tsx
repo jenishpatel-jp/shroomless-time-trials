@@ -1,7 +1,8 @@
-import { TextInput, View, StyleSheet } from 'react-native'
+import { TextInput, View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
 import AddButton from '../buttons/AddButton'
 import { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
+
 
 interface AddTimeProps {
     map: string;
@@ -13,14 +14,12 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
 
     const [time, setTime] = useState<string>("");
 
-    useEffect(() => {
-        console.log("time", time)
-    }, [time]);
 
+    // Currently not been used while troubleshooting the time input
     const formatTimeInput = (input: string) => {
         // Remove existing ':' and '.' before formatting
         let raw = input.replace(/[:.]/g, "");
-    
+        if (raw === '') return ''; // Return empty string if input is empty
         let formatted = raw;
         if (raw.length >= 2) {
             formatted = `${raw.slice(0, 1)}:${raw.slice(1)}`;
@@ -32,9 +31,23 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
         return formatted;
     };
 
+    const handleChangeText = (text: string) => {
+        if (text === '') {
+          setTime('');
+        } else {
+          setTime(formatTimeInput(text));
+        }
+      };
+
+
+
 
     return (
-        <View style={styles.container}> 
+        <KeyboardAvoidingView 
+            style={styles.container}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+
+        > 
             <LinearGradient
                 colors={['#FF1BDC', '#2CBDFE']} 
                 style={styles.linearBorder}
@@ -43,12 +56,14 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
                 <TextInput 
                     placeholder={'0:00.000'}
                     placeholderTextColor={'#009FE5'}
-                    onChangeText={(text) => setTime(formatTimeInput(text))}
-                    value={time}
+                    value= {time}
+                    onChangeText={handleChangeText}
                     style={styles.input}
                     textAlign='center'
                     keyboardType='numeric'
-                    maxLength={8}
+                    maxLength={8} 
+            
+                
             
                 />
             </LinearGradient>
@@ -59,7 +74,7 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
                 setTrigger={setTrigger}
                 setTime={setTime}
             />
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 
