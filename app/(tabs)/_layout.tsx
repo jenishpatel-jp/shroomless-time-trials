@@ -1,6 +1,5 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
-import { useColorScheme } from '@/components/defaultComponents/useColorScheme';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 
@@ -11,12 +10,13 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        tabBarActiveTintColor: '#FF1BDC',
       }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Old Maps',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="timer-sand" size={24} color="orange" />,
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="timer-sand" size={30} color="#2CBDFE" />,
           headerShown: false,
         }}
       />
@@ -24,7 +24,7 @@ export default function TabLayout() {
         name="newMaps"
         options={{
           title: 'New Maps',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="timer-sand-complete" size={24} color="orange" />,
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="timer-sand-complete" size={30} color="#2CBDFE" />,
           headerShown: false,
         }}
       />

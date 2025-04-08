@@ -3,7 +3,6 @@ import MapContainer from '@/components/mapContainer/mapContainer';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { oldMaps } from '@/utils/oldMapUtils';
 import { FlatList } from 'react-native';
-import { useState } from 'react';
 
 export default function TabOneScreen() {
 
