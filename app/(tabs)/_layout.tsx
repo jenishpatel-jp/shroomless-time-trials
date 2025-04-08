@@ -16,19 +16,20 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Old Maps',
-          tabBarIcon: ({ focused, color }) => 
+          tabBarIcon: ({ focused }) => 
             <MaterialCommunityIcons 
               name={ focused ? "timer-sand" : "timer-sand-complete" } 
               size={30} 
               color={ focused ? "#FF1BDC" : "#2CBDFE"  }  />,
           headerShown: false,
+          
         }}
       />
       <Tabs.Screen
         name="newMaps"
         options={{
           title: 'New Maps',
-          tabBarIcon: ({ color, focused }) => 
+          tabBarIcon: ({ focused }) => 
             <MaterialCommunityIcons 
               name={ focused ? "timer-sand" : "timer-sand-complete"}
               size= {30}   
