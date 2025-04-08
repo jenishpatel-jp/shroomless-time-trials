@@ -16,7 +16,11 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Old Maps',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="timer-sand" size={30} color="#2CBDFE" />,
+          tabBarIcon: ({ focused, color }) => 
+            <MaterialCommunityIcons 
+              name={ focused ? "timer-sand" : "timer-sand-complete" } 
+              size={30} 
+              color={ focused ? "#FF1BDC" : "#2CBDFE"  }  />,
           headerShown: false,
         }}
       />
@@ -24,7 +28,11 @@ export default function TabLayout() {
         name="newMaps"
         options={{
           title: 'New Maps',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="timer-sand-complete" size={30} color="#2CBDFE" />,
+          tabBarIcon: ({ color, focused }) => 
+            <MaterialCommunityIcons 
+              name={ focused ? "timer-sand" : "timer-sand-complete"}
+              size= {30}   
+              color={ focused ? "#FF1BDC" : "#2CBDFE"  }  />,
           headerShown: false,
         }}
       />
