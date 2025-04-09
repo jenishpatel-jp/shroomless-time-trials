@@ -12,3 +12,19 @@ export const fetchTimes = async (
     }
 };
 
+export const handleAddTime = async (
+    map: string, 
+    time: string,
+    setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
+    addTime: (map: string, time: string, callback: () => void) => Promise<void>
+) => {
+    if (!time) {
+        console.warn("time is empty");
+        return;
+    }
+    if (!map) {
+        console.warn("map is empty")
+    }
+    await addTime(map, time, () => setTrigger((prev) => !prev));
+};
+

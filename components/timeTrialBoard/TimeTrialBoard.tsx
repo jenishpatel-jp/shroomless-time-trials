@@ -6,12 +6,18 @@ import { View, StyleSheet, FlatList } from "react-native";
 interface TimeTrialBoardProp {
     map: string;
     mapAndTime: Record<string, string[]>;
-    handleAddTime: (map: string, time:string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+    handleAddTime: (
+        map: string, 
+        time:string, 
+        setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
+        addTime: (map: string, time: string, callback: () => void) => Promise<void>
+    ) => Promise<void>;
     handleDeleteTime: (time: string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
     setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+    addTime: (map: string, time: string, callback: () => void) => Promise<void>;
 }
 
-const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { map, mapAndTime, handleAddTime, handleDeleteTime, setTrigger } ) => {
+const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { map, mapAndTime, handleAddTime, handleDeleteTime, setTrigger, addTime } ) => {
 
     const converToMilliseconds = (time: string) => {
         const [minutes, seconds, milliseconds] = time.split(/[:.]/).map(Number);
@@ -37,6 +43,7 @@ const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { map, mapAndTime, handle
                     map={map} 
                     handleAddTime={handleAddTime}  
                     setTrigger={setTrigger}
+                    addTime={addTime}
                     />
             </View>
         </LinearGradient>

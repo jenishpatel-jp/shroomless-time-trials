@@ -6,11 +6,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 interface AddTimeProps {
     map: string;
-    handleAddTime: (map: string, time:string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+    handleAddTime: (
+        map: string, 
+        time:string, 
+        setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
+        addTime: (map: string, time: string, callback: () => void) => Promise<void>
+    ) => Promise<void>;
     setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+    addTime: (map: string, time: string, callback: () => void) => Promise<void>;
 }
 
-const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) => {
+const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger, addTime } ) => {
 
     const [time, setTime] = useState<string>("");
 
@@ -73,6 +79,7 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger } ) =
                 map={map}
                 setTrigger={setTrigger}
                 setTime={setTime}
+                addTime={addTime}
             />
         </KeyboardAvoidingView>
     )

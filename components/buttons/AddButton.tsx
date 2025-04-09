@@ -2,17 +2,23 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Pressable, Text, StyleSheet } from "react-native"
 
 interface AddButtonProps {
-    handleAddTime: (map: string, time:string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+    handleAddTime: (
+        map: string, 
+        time:string, 
+        setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
+        addTime: (map: string, time: string, callback: () => void) => Promise<void>
+    ) => Promise<void>;
     time: string;
     map: string;
     setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
-    setTime: React.Dispatch<React.SetStateAction<string>>
+    setTime: React.Dispatch<React.SetStateAction<string>>;
+    addTime: (map: string, time: string, callback: () => void) => Promise<void>;
 }
 
-const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, map, setTrigger, setTime } ) => {
+const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, map, setTrigger, setTime, addTime } ) => {
 
     const addTimeAndReset = () => {
-        handleAddTime(map, time, setTrigger)
+        handleAddTime(map, time, setTrigger, addTime)
         setTime("")
     }
 
