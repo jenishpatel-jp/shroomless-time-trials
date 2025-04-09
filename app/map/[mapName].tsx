@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import TimeTrialBoard from "@/components/timeTrialBoard/TimeTrialBoard";
 import { useDatabase } from "@/utils/dbFunctions";
 import { useSQLiteContext } from "expo-sqlite";
+import { fetchTimes } from "@/utils/mapNameUtils";
 
 export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
@@ -16,15 +17,6 @@ export default function MapDetailsScreen(){
     const db = useSQLiteContext()
     const { addTime, deleteTime, getTimes } = useDatabase(db);
 
-    // fetchches the map and times from the db
-    const fetchTimes = async () => {
-      try {
-        const allMapAndTimes = await getTimes();
-        setMapAndTime(allMapAndTimes)
-      } catch (error){
-        console.error("Error fetching map and times", error);
-      }
-    };
 
     // handles adding times to the db
     const handleAddTime = async (
@@ -53,8 +45,8 @@ export default function MapDetailsScreen(){
  
 
     useEffect(()=> {
-      fetchTimes()
-    },[trigger]);
+      fetchTimes(getTimes, setMapAndTime)
+    }, [trigger]);
 
     return(
         <View style={styles.container}>
