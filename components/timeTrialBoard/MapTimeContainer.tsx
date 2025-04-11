@@ -5,11 +5,16 @@ import { LinearGradient } from "expo-linear-gradient";
 
 interface MapTimeContainerProp {
   time: string;
-  handleDeleteTime: (time: string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+  handleDeleteTime: (
+    time: string, 
+    setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
+    deleteTime: (time: string, callback: () => void) => Promise<void>
+  ) => Promise<void>;
   setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+  deleteTime: (time: string, callback: () => void) => Promise<void>;
 }
 
-const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time, handleDeleteTime, setTrigger} ) => {
+const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time, handleDeleteTime, setTrigger, deleteTime} ) => {
   return (
     <LinearGradient 
       colors={['#FF1BDC', '#2CBDFE']}
@@ -17,7 +22,12 @@ const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time, handleDeleteTi
     >
       <View style={styles.container}>
           <MapTime time={time}  />
-          <DeleteButton time={time} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger} />
+          <DeleteButton 
+            time={time} 
+            handleDeleteTime={handleDeleteTime} 
+            setTrigger={setTrigger} 
+            deleteTime={deleteTime}
+            />
       </View>
     </LinearGradient>
   )

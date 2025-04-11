@@ -12,12 +12,25 @@ interface TimeTrialBoardProp {
         setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
         addTime: (map: string, time: string, callback: () => void) => Promise<void>
     ) => Promise<void>;
-    handleDeleteTime: (time: string, setTrigger: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+    handleDeleteTime: (
+        time: string, 
+        setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
+        deleteTime: (time: string, callback: () => void) => Promise<void>
+    ) => Promise<void>;
     setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
     addTime: (map: string, time: string, callback: () => void) => Promise<void>;
+    deleteTime: (time: string, callback: () => void) => Promise<void>;
 }
 
-const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { map, mapAndTime, handleAddTime, handleDeleteTime, setTrigger, addTime } ) => {
+const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { 
+    map, 
+    mapAndTime, 
+    handleAddTime, 
+    handleDeleteTime, 
+    setTrigger, 
+    addTime,
+    deleteTime
+} ) => {
 
     const converToMilliseconds = (time: string) => {
         const [minutes, seconds, milliseconds] = time.split(/[:.]/).map(Number);
@@ -35,7 +48,12 @@ const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { map, mapAndTime, handle
             <View style={styles.container}>
                 <FlatList 
                     data={sortedTimes}
-                    renderItem={({item}) => <MapTimeContainer time={item} handleDeleteTime={handleDeleteTime} setTrigger={setTrigger}/>}
+                    renderItem={({item}) => <MapTimeContainer 
+                        time={item} 
+                        handleDeleteTime={handleDeleteTime} 
+                        setTrigger={setTrigger}
+                        deleteTime={deleteTime}
+                        />}
                     keyExtractor={(item) => item}
                 />
                 

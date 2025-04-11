@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import TimeTrialBoard from "@/components/timeTrialBoard/TimeTrialBoard";
 import { useDatabase } from "@/utils/dbFunctions";
 import { useSQLiteContext } from "expo-sqlite";
-import { fetchTimes, handleAddTime } from "@/utils/mapNameUtils";
+import { fetchTimes, handleAddTime, handleDeleteTime } from "@/utils/mapNameUtils";
 
 export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
@@ -15,17 +15,7 @@ export default function MapDetailsScreen(){
 
     // retrieve database and database functions 
     const db = useSQLiteContext()
-    const { addTime, deleteTime, getTimes } = useDatabase(db);
-
-
-    // handles deleting times to the db
-    const handleDeleteTime = async ( 
-      time:string,
-      setTrigger: React.Dispatch<React.SetStateAction<boolean>>
-    ) => {
-      await deleteTime(time, ()=> setTrigger((prev) => !prev))
-    }
- 
+    const { addTime, deleteTime, getTimes } = useDatabase(db); 
 
     useEffect(()=> {
       fetchTimes(getTimes, setMapAndTime)
@@ -41,6 +31,7 @@ export default function MapDetailsScreen(){
               handleDeleteTime={handleDeleteTime}
               setTrigger={setTrigger}
               addTime={addTime}
+              deleteTime={deleteTime}
               />
         </View>
     );
