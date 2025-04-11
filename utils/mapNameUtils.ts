@@ -28,3 +28,11 @@ export const handleAddTime = async (
     await addTime(map, time, () => setTrigger((prev) => !prev));
 };
 
+export const handleDeleteTime = async(
+    time:string,
+    setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
+    deleteTime: (time: string, callback: () => void) => Promise<void>
+) => {
+    await deleteTime(time, () => setTrigger((prev) => !prev))
+};
+
