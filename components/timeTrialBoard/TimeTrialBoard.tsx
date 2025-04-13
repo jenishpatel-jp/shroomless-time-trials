@@ -2,6 +2,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import AddTime from "./AddTime";
 import MapTimeContainer from "./MapTimeContainer";
 import { View, StyleSheet, FlatList } from "react-native";
+import { converToMilliseconds } from "@/utils/timeTrialBoardUtils";
 
 interface TimeTrialBoardProp {
     map: string;
@@ -31,11 +32,6 @@ const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( {
     addTime,
     deleteTime
 } ) => {
-
-    const converToMilliseconds = (time: string) => {
-        const [minutes, seconds, milliseconds] = time.split(/[:.]/).map(Number);
-        return minutes * 60000 + seconds * 1000 + milliseconds;
-    };
 
     const sortedTimes = mapAndTime[map]?.sort((a:any, b:any) => converToMilliseconds(a)-converToMilliseconds(b)) || [];
 
