@@ -13,6 +13,7 @@ export default function TabOneScreen() {
           data={oldMaps}
           renderItem={({item}) => <MapContainer image={item.image} name={item.name} />}
           keyExtractor={(item) => item.name}
+          testID='flatlist'
         />
       </SafeAreaView>
     </SafeAreaProvider>
