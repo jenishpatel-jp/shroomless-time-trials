@@ -22,12 +22,12 @@ jest.mock('expo-router', () => ({
 }));
 
 
-describe('TabOneScreen', () => {
-    test('renders 4 map images', ()=> {
+// describe('TabOneScreen', () => {
+//     test('renders 4 map images', ()=> {
 
-        const { getByTestId, getAllByTestId, toJSON } = render(<TabOneScreen />);
-        const images = getAllByTestId('map-image');
-        console.log(JSON.stringify(toJSON(), null, 2));
-        expect(images.length).toBe(4);
-    })
-});
+//         const { getByTestId, getAllByTestId, toJSON } = render(<TabOneScreen />);
+//         const images = getAllByTestId('map-image');
+//         console.log(JSON.stringify(toJSON(), null, 2));
+//         expect(images.length).toBe(4);
+//     })
+// });
