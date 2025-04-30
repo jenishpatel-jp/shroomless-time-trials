@@ -8,6 +8,7 @@ type MapContainerProps = {image: any, name: string}
 const MapContainer = ({ image, name }:MapContainerProps ) => {
 
     const router = useRouter();
+    console.log(`[MapContainer] rendering map: ${name}`);
     
     return (
         <TouchableOpacity onPress={()=> router.push({ pathname:"/map/[mapName]", params: { mapName:name } })} >
@@ -17,6 +18,7 @@ const MapContainer = ({ image, name }:MapContainerProps ) => {
                 <Image 
                     source={image}       
                     style={styles.image}
+                    testID="map-image"
                 />
             </LinearGradient>
         </TouchableOpacity>
