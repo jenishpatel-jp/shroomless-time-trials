@@ -7,7 +7,8 @@ describe("MapTime", () => {
         render(<MapTime time={time} />);
 
         // use screen.getByText to find the text in the rendered component
-        const timeText = screen.getByText(time);
+        const timeText = screen.getByRole("text", { name: time });
+        expect(timeText).toBeTruthy(); // Check if the text is present
 
     });
 });
