@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react-native';
+import { render, screen, fireEvent } from '@testing-library/react-native';
 import AddTime from '@/components/timeTrialBoard/AddTime';
 
 describe('AddTime', () => {
@@ -19,4 +19,9 @@ describe('AddTime', () => {
         expect(input).toBeOnTheScreen();
     });
     
+    test('formats input text to 0:123.456', () => {
+        const input = screen.getByPlaceholderText('0:00.000');
+        fireEvent.changeText(input, '012345');
+        expect(input.props.value).toBe('0:12.345');
+    });
 });
