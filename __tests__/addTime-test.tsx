@@ -13,5 +13,10 @@ describe('AddTime', () => {
     beforeEach(() => {
         render(<AddTime {...mockProps} />);
     });
+
+    test('renders the input field with correct placeholder', () => {
+        const input = screen.getByPlaceholderText('0:00.000');
+        expect(input).toBeOnTheScreen();
+    });
     
 });
