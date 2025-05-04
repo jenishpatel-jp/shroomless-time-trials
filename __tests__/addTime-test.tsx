@@ -24,4 +24,10 @@ describe('AddTime', () => {
         fireEvent.changeText(input, '012345');
         expect(input.props.value).toBe('0:12.345');
     });
+
+    test('clears input when empty string is typed', () => {
+        const input = screen.getByPlaceholderText('0:00.000');
+        fireEvent.changeText(input, '');
+        expect(input.props.value).toBe('');
+    });
 });
