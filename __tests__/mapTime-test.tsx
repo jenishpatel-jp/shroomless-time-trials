@@ -3,7 +3,6 @@ import MapTime from "../components/timeTrialBoard/MapTime";
 
 describe("MapTime", () => {
 
-    //testing if the element is on screen
     test("renders a time", () => {
         const times = ["00:00.000", "01:00:23", "3:43.123"];
 
@@ -13,4 +12,25 @@ describe("MapTime", () => {
             unmount();
         });
     });
-});
+
+    test("renders empty time string", () => {
+        render(<MapTime time={""} />);
+        expect(screen.getByText("")).toBeOnTheScreen();
+    });
+
+
+    test("matches snapshot", () => {
+        const tree = render(<MapTime time="00:00.000" />).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+
+    test("time has correct style", () => {
+        render(<MapTime time="01:23.456" />);
+        expect(screen.getByText("01:23.456")).toHaveStyle({
+            fontSize: 20,
+            fontWeight: "bold",
+            color: "#009FE5",
+        }); 
+    });
+})

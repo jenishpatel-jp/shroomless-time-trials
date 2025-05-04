@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapTime matches snapshot 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "black",
+      "borderRadius": 10,
+      "color": "black",
+      "height": "100%",
+      "justifyContent": "center",
+      "width": 240,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#009FE5",
+        "fontSize": 20,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    00:00.000
+  </Text>
+</View>
+`;
