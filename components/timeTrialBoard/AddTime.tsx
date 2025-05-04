@@ -67,10 +67,7 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger, addT
                     style={styles.input}
                     textAlign='center'
                     keyboardType='numeric'
-                    maxLength={8} 
-            
-                
-            
+                    maxLength={8}
                 />
             </LinearGradient>
             <AddButton  
