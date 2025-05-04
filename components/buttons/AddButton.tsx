@@ -30,7 +30,12 @@ const AddButton: React.FC<AddButtonProps> = ( { handleAddTime, time, map, setTri
         >
             <Pressable 
                 onPress={addTimeAndReset}
-                style={styles.button}>
+                style={styles.button}
+                accessibilityLabel="Add Time Button"
+                accessibilityHint="Press to add time to the map"
+                accessibilityRole="button"
+                >
+                
                     <Text style={styles.text}>Add</Text>
             </Pressable>
         </LinearGradient>

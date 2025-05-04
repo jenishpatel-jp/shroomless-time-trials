@@ -30,4 +30,19 @@ describe('AddTime', () => {
         fireEvent.changeText(input, '');
         expect(input.props.value).toBe('');
     });
+
+    test('calls handleAddTime with correct arguments on AddButton press', () => {
+        const input = screen.getByPlaceholderText('0:00.000');
+        fireEvent.changeText(input, '012345');
+
+        const button = screen.getByRole('button');
+        fireEvent.press(button);
+
+        expect(mockProps.handleAddTime).toHaveBeenCalledWith(
+            mockProps.map,
+            '0:12.345',
+            mockProps.setTrigger,
+            mockProps.addTime
+        );
+    });
 });

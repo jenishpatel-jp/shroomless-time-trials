@@ -77,6 +77,7 @@ const AddTime: React.FC<AddTimeProps> = ( { map, handleAddTime, setTrigger, addT
                 setTrigger={setTrigger}
                 setTime={setTime}
                 addTime={addTime}
+            
             />
         </KeyboardAvoidingView>
     )

@@ -24,7 +24,6 @@ describe("MapTime", () => {
         expect(tree).toMatchSnapshot();
     });
 
-
     test("time has correct style", () => {
         render(<MapTime time="01:23.456" />);
         expect(screen.getByText("01:23.456")).toHaveStyle({
