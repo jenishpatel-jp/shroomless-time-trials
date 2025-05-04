@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react-native';
-import AddButton from '../components/buttons/AddButton';
+import AddTime from '@/components/timeTrialBoard/AddTime';
 
-describe('AddButton', () => {
-
+describe('AddTime', () => {
     
 });

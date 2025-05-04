@@ -1,6 +1,6 @@
 import { TextInput, View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
 import AddButton from '../buttons/AddButton'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
