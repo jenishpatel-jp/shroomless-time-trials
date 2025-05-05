@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react-native";
 import MapTime from "../components/timeTrialBoard/MapTime";
 
 describe("MapTime", () => {
-
+    
     test("renders a time", () => {
         const times = ["00:00.000", "01:00:23", "3:43.123"];
 
