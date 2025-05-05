@@ -30,6 +30,19 @@ describe('AddButton', () => {
             fontSize: 20,
             textAlign: 'center',
         });
+    });
+
+    test('Add Button calls addTimeAndReset on press', async () => {
+        const button = screen.getByRole('button', { name: /Add/i });
+        await user.press(button);
+
+        expect(mockProps.handleAddTime).toHaveBeenCalledWith(
+            mockProps.map,
+            mockProps.time,
+            mockProps.setTrigger,
+            mockProps.addTime
+        );
+        expect(mockProps.setTime).toHaveBeenCalledWith("");
 
     });
 
