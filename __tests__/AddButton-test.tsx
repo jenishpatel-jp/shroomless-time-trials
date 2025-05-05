@@ -16,4 +16,12 @@ describe('AddButton', () => {
         render(<AddButton {...mockProps} />);
     });
 
+    // Test to check if the button is rendered correctly
+    test('It renders the button with correct text', () => {
+        const button = screen.getByRole('button', { name: /Add/i });
+        expect(button).toBeOnTheScreen();
+    });
+
+    // Test the button press functionality calls the correct function with the right arguments
+
 });
