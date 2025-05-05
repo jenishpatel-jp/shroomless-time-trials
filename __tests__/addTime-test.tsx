@@ -10,35 +10,36 @@ describe('AddTime', () => {
         addTime: jest.fn(),
     };
 
+    const user = userEvent.setup();
+
     beforeEach(() => {
         render(<AddTime {...mockProps} />);
     });
-
-    const user = userEvent.setup();
 
     test('renders the input field with correct placeholder', () => {
         const input = screen.getByPlaceholderText('0:00.000');
         expect(input).toBeOnTheScreen();
     });
     
-    test('formats input text to 0:123.456', () => {
+    test('formats input text to 0:123.456', async () => {
         const input = screen.getByPlaceholderText('0:00.000');
-        fireEvent.changeText(input, '012345');
+        await user.type(input, '012345');
         expect(input.props.value).toBe('0:12.345');
     });
 
-    test('clears input when empty string is typed', () => {
+    test('clears input when empty string is typed', async () => {
         const input = screen.getByPlaceholderText('0:00.000');
-        fireEvent.changeText(input, '');
+        await user.type(input, '012345');
+        await user.clear(input);
         expect(input.props.value).toBe('');
     });
 
-    test('calls handleAddTime with correct arguments on AddButton press', () => {
+    test('calls handleAddTime with correct arguments on AddButton press', async () => {
         const input = screen.getByPlaceholderText('0:00.000');
-        fireEvent.changeText(input, '012345');
+        await user.type(input, '012345');
 
         const button = screen.getByRole('button');
-        fireEvent.press(button);
+        await user.press(button);
 
         expect(mockProps.handleAddTime).toHaveBeenCalledWith(
             mockProps.map,
