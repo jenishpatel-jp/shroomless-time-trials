@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react-native';
+import { render, screen, fireEvent, userEvent } from '@testing-library/react-native';
 import AddTime from '@/components/timeTrialBoard/AddTime';
 
 describe('AddTime', () => {
@@ -12,6 +12,7 @@ describe('AddTime', () => {
 
     beforeEach(() => {
         render(<AddTime {...mockProps} />);
+        const user = userEvent.setup();
     });
 
     test('renders the input field with correct placeholder', () => {
