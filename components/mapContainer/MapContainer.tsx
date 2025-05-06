@@ -8,7 +8,6 @@ type MapContainerProps = {image: any, name: string}
 const MapContainer = ({ image, name }:MapContainerProps ) => {
 
     const router = useRouter();
-    console.log(`[MapContainer] rendering map: ${name}`);
     
     return (
         <TouchableOpacity onPress={()=> router.push({ pathname:"/map/[mapName]", params: { mapName:name } })} >
