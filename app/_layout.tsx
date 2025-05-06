@@ -6,7 +6,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 
-import { useColorScheme } from '@/components/defaultComponents/useColorScheme';
 import { SQLiteProvider } from 'expo-sqlite';
 import { setupDatabase } from '@/lib/db';
 
@@ -48,11 +47,11 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+
 
   return (
     <SQLiteProvider databaseName='stt' onInit={setupDatabase} >
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <ThemeProvider value={DarkTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="map/[mapName]" options={{headerShown: false}} />
