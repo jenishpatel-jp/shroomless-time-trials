@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, userEvent } from '@testing-library/react-native';
+import { render, screen, userEvent } from '@testing-library/react-native';
 import AddTime from '@/components/timeTrialBoard/AddTime';
 
 describe('AddTime', () => {
