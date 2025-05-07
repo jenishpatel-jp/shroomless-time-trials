@@ -5,7 +5,7 @@ import { useRouter } from "expo-router";
 
 type MapContainerProps = {image: any, name: string}
 
-const MapContainer = ({ image, name }:MapContainerProps ) => {
+const MapContainer = ({ image, name }: MapContainerProps ) => {
 
     const router = useRouter();
     
@@ -18,7 +18,6 @@ const MapContainer = ({ image, name }:MapContainerProps ) => {
                     source={image}       
                     style={styles.image}
                     testID="map-image"
-                    accessibilityRole="image"
                 />
             </LinearGradient>
         </TouchableOpacity>

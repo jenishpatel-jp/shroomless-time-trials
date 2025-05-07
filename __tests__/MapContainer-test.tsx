@@ -1,5 +1,6 @@
 import { render, screen, userEvent } from "@testing-library/react-native";
 import MapContainer from "@/components/mapContainer/mapContainer";
+import { renderRouter } from "expo-router/testing-library";
 
 describe("MapContainer", () => {
 
