@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react-native";
-import MapTime from "../components/timeTrialBoard/MapTime";
+import MapTime from "../MapTime";
 
 describe("MapTime", () => {
     
