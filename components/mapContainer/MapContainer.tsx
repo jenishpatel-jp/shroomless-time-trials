@@ -10,7 +10,11 @@ const MapContainer = ({ image, name }: MapContainerProps ) => {
     const router = useRouter();
     
     return (
-        <TouchableOpacity onPress={()=> router.push({ pathname:"/map/[mapName]", params: { mapName:name } })} >
+        <TouchableOpacity 
+            onPress={()=> router.push({ pathname:"/map/[mapName]", params: { mapName:name } })} 
+            accessibilityRole="button"
+            testID="map-button"
+            >
             <LinearGradient 
                 colors={['#FF1BDC', '#2CBDFE']}
                 style={styles.container}>
