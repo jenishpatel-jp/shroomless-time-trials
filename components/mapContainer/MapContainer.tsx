@@ -18,6 +18,7 @@ const MapContainer = ({ image, name }:MapContainerProps ) => {
                     source={image}       
                     style={styles.image}
                     testID="map-image"
+                    accessibilityRole="image"
                 />
             </LinearGradient>
         </TouchableOpacity>

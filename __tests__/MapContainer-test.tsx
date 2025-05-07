@@ -4,12 +4,18 @@ import MapContainer from "@/components/mapContainer/mapContainer";
 describe("MapContainer", () => {
 
     const mockProps = {
-        image: require("../../../assets/images/Map.png"),
+        image: "testImage",
         name: "testMap",
     };
 
     beforeEach(() => {
         render(<MapContainer {...mockProps} />);
     });
+
+    test("renders the map image", () => {
+        const image = screen.getByTestId("map-image");
+        expect(image).toBeOnTheScreen();
+    });
+
 
 });
