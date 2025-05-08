@@ -1,8 +1,7 @@
 import { render, screen, userEvent } from '@testing-library/react-native';
 import DeleteButton from '@/components/buttons/DeleteButton';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-//Mock vector icons to avoid test rendering issues
+
 jest.mock('@expo/vector-icons/FontAwesome6', () => {
     const React = require('react');
     const { View } = require('react-native');
@@ -26,9 +25,19 @@ describe('DeleteButton', () => {
         render(<DeleteButton {...mockProps} />);        
     });
 
-    test('Button renders with the correct icon', () => {
+    test('Button renders on screen', () => {
         const button = screen.getByRole('button');
         expect(button).toBeOnTheScreen();
+    });
+
+    test('Button press triggers handleDeleteTime', async () => {
+        const button = screen.getByRole('button');
+        await user.press(button);
+        expect(mockProps.handleDeleteTime).toHaveBeenCalledWith(
+            mockProps.time,
+            mockProps.setTrigger,
+            mockProps.deleteTime
+        );
     });
 
 });
