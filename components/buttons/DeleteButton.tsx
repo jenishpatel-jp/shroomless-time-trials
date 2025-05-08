@@ -18,8 +18,14 @@ const DeleteButton: React.FC<DeleteButtonProps> = ( { time, handleDeleteTime, se
         <View style={styles.deleteButton}>
             <Pressable
                 onPress={()=> handleDeleteTime(time, setTrigger, deleteTime)}
+                accessibilityRole="button"
+                accessibilityLabel="Delete time"
             >
-                <FontAwesome6 name="trash-can" size={24} color="#FF1BDC" />
+                <FontAwesome6 
+                    name="trash-can" size={24} 
+                    color="#FF1BDC"
+                    
+                    />
             </Pressable>
         </View>
         
