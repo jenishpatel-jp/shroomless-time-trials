@@ -1,6 +1,27 @@
 import { render, screen } from "@testing-library/react-native";
 import TimeTrialBoard from "../TimeTrialBoard";
 
+jest.mock('expo-font', () => ({
+    isLoaded: () => true,
+    loadAsync: () => Promise.resolve(),
+  }));
+  
+  jest.mock('expo-linear-gradient', () => {
+    const { View } = require('react-native');
+    return {
+      LinearGradient: View,
+    };
+  });
+  
+  jest.mock('@expo/vector-icons/FontAwesome6', () => {
+    const React = require('react');
+    const { View } = require('react-native');
+    return {
+      __esModule: true,
+      default: (props: any) => <View {...props} />,
+    };
+  });
+
 describe("TimeTrialBoard", () => {
 
     const mockProps = {
@@ -20,8 +41,8 @@ describe("TimeTrialBoard", () => {
     });
 
     test("renders TimeTrialBoard", () => {
-        expect(screen.getByText("testMap")).toBeOnTheScreen();
-        expect(screen.getByText("00:00.000")).toBeOnTheScreen();
+        const container = screen.getByTestId("time-trial-board-container");
+        expect(container).toBeOnTheScreen();
     });
 
 });

@@ -41,7 +41,11 @@ const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( {
         <LinearGradient  
             colors={['#FF1BDC', '#2CBDFE']}
             style={styles.linearBorder}>
-            <View style={styles.container}>
+            <View 
+                style={styles.container}
+                testID="time-trial-board-container"
+                accessibilityLabel="Time Trial Board Container"
+                >
                 <FlatList 
                     data={sortedTimes}
                     renderItem={({item}) => <MapTimeContainer 
