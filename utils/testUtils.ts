@@ -3,7 +3,7 @@ import { useDatabase } from "./dbFunctions";
 
 type MockDatabase = Pick<SQLiteDatabase, "runAsync" | "getAllAsync">;
 
-export const createteMockDatabase = () :MockDatabase => {
+export const createteMockDatabase = (): MockDatabase => {
     return {
         runAsync: jest.fn(),
         getAllAsync: jest.fn()
