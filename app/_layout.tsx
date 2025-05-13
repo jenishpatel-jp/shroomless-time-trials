@@ -14,6 +14,29 @@ import { setupDatabase } from '@/lib/db';
 import { configureSynced, syncObservable } from '@legendapp/state/sync';
 import { observablePersistSqlite } from '@legendapp/state/persist-plugins/expo-sqlite';
 import Storage from 'expo-sqlite/kv-store';
+import { observable } from '@legendapp/state';
+
+// Legend State Global Configuration
+
+export const state$ = observable({
+  // Define your global state here
+})
+
+const persistOptions = configureSynced({
+  persist: {
+    plugin: observablePersistSqlite(Storage)
+  },
+});
+
+syncObservable(
+  state$,
+  persistOptions({
+    persist: {
+      name: 'store',
+    },
+  }),
+);
+
 
 export {
   // Catch any errors thrown by the Layout component.
