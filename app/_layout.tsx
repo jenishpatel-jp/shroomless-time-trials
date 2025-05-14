@@ -20,6 +20,8 @@ import { observable } from '@legendapp/state';
 
 export const state$ = observable({
   // Define your global state here
+  mapAndTime: {} as Record<string, string[]>,
+  trigger: false,
 })
 
 const persistOptions = configureSynced({
@@ -28,7 +30,7 @@ const persistOptions = configureSynced({
   },
 });
 
-syncObservable(
+syncObservable( 
   state$,
   persistOptions({
     persist: {
