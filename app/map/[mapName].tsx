@@ -1,10 +1,22 @@
+//Expo Router import
 import { useLocalSearchParams } from "expo-router";
+
+// React Native imports
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useEffect, useState } from "react";
+
+// Components import 
 import TimeTrialBoard from "@/components/timeTrialBoard/TimeTrialBoard";
+
+// Database imports
 import { useDatabase } from "@/utils/dbFunctions";
 import { useSQLiteContext } from "expo-sqlite";
 import { fetchTimes, handleAddTime, handleDeleteTime } from "@/utils/mapNameUtils";
+
+// Legend State imports
+import { state$ } from "@/app/_layout";
+
+
 
 export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();

@@ -22,7 +22,7 @@ export const state$ = observable({
   // Define your global state here
   mapAndTime: {} as Record<string, string[]>,
   trigger: false,
-})
+});
 
 const persistOptions = configureSynced({
   persist: {
