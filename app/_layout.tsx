@@ -4,7 +4,6 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import 'react-native-reanimated';
 
 // SQLite imports
 import { SQLiteProvider } from 'expo-sqlite';
@@ -24,6 +23,9 @@ export const state$ = observable({
   trigger: false,
 });
 
+
+// Legend State Sync Configuration
+// This is the configuration for syncing the state with SQLite
 const persistOptions = configureSynced({
   persist: {
     plugin: observablePersistSqlite(Storage)
