@@ -12,6 +12,7 @@ export const fetchTimes = async (
     }
 };
 
+// adds a time to the database and updates the state
 export const handleAddTime = async (
     map: string, 
     time: string,
@@ -28,6 +29,7 @@ export const handleAddTime = async (
     await addTime(map, time, () => setTrigger((prev) => !prev));
 };
 
+// deletes a time from the database and updates the state
 export const handleDeleteTime = async(
     time:string,
     setTrigger: React.Dispatch<React.SetStateAction<boolean>>,

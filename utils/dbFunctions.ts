@@ -2,6 +2,7 @@ import { type SQLiteDatabase } from "expo-sqlite";
 
 export const useDatabase = (db: SQLiteDatabase) => {
 
+    // Add a new time to the database
     const addTime = async (map: string, time: string, callback?: ()=> void) => {
         try {
             const result = await db.runAsync(
@@ -14,6 +15,7 @@ export const useDatabase = (db: SQLiteDatabase) => {
         }
     };
 
+    // Delete a time from the database
     const deleteTime = async (time:string, callback?: ()=> void) => {
         try {
             const result = await db.runAsync(
@@ -39,6 +41,7 @@ export const useDatabase = (db: SQLiteDatabase) => {
         time: string;
     } 
 
+    // Get all times from the database
     const getTimes = async () => {
         try {
             const allRows: TimeRow[] = await db.getAllAsync('SELECT * FROM stt');
