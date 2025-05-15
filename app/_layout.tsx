@@ -19,8 +19,7 @@ import { observable } from '@legendapp/state';
 
 export const state$ = observable({
   // Define your global state here
-  mapAndTime: {} as Record<string, string[]>,
-  trigger: false,
+  mapAndTime: {} as Record<string, string[]>
 });
 
 
