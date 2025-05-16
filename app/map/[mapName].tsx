@@ -35,9 +35,14 @@ export default function MapDetailsScreen(){
     //   fetchTimes(getTimes)
     // }, [])
 
+    // Will need to remove this useEffec
     useEffect(()=> {
       fetchTimes(getTimes, setMapAndTime)
     }, [trigger]);
+
+
+    // Reactive array of times for this specific map
+    const timeForMap = useSelector( () => state$.mapAndTime[map].get() ?? []);
 
     return(
         <View style={styles.container}>
