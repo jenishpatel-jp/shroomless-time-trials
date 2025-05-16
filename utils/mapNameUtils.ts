@@ -1,3 +1,4 @@
+import { state$ } from "@/app/_layout";
 
 // Fetches the map and times from the database and sets the state
 export const fetchTimes = async (
