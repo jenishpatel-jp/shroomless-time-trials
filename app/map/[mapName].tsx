@@ -15,7 +15,8 @@ import { fetchTimes, handleAddTime, handleDeleteTime } from "@/utils/mapNameUtil
 
 // Legend State imports
 import { state$ } from "@/app/_layout";
-
+import { useSelector } from "@legendapp/state/react";
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
 
 export default function MapDetailsScreen(){
@@ -28,6 +29,11 @@ export default function MapDetailsScreen(){
     // retrieve database and database functions 
     const db = useSQLiteContext()
     const { addTime, deleteTime, getTimes } = useDatabase(db); 
+
+    // retrieve state from Legend State (need to update the function in mapNameUtils)
+    // useEffect( () => {
+    //   fetchTimes(getTimes)
+    // }, [])
 
     useEffect(()=> {
       fetchTimes(getTimes, setMapAndTime)
