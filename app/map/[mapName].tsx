@@ -18,43 +18,33 @@ import { state$ } from "@/app/_layout";
 import { useSelector } from "@legendapp/state/react";
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
-
 export default function MapDetailsScreen(){
     const { mapName } = useLocalSearchParams();
     const map = mapName as string;
-
-    const [mapAndTime, setMapAndTime] = useState<Record<string, string[]>>({})
-    const [trigger, setTrigger] = useState(false);
 
     // retrieve database and database functions 
     const db = useSQLiteContext()
     const { addTime, deleteTime, getTimes } = useDatabase(db); 
 
-    // retrieve state from Legend State (need to update the function in mapNameUtils)
-    // useEffect( () => {
-    //   fetchTimes(getTimes)
-    // }, [])
-
-    // Will need to remove this useEffec
     useEffect(()=> {
       fetchTimes(getTimes)
-    }, [trigger]);
+    }, []);
 
 
     // Reactive array of times for this specific map
-    const timeForMap = useSelector( () => state$.mapAndTime[map].get() ?? []);
+    const timesForMap = useSelector( () => state$.mapAndTime[map].get() ?? []);
 
     return(
         <View style={styles.container}>
             <Text style={styles.title}>{mapName}</Text>
             <TimeTrialBoard 
               map={map} 
-              mapAndTime={mapAndTime}
-              handleAddTime={handleAddTime}
-              handleDeleteTime={handleDeleteTime}
-              setTrigger={setTrigger}
-              addTime={addTime}
-              deleteTime={deleteTime}
+              mapAndTime={{ [map] : timesForMap }}
+              handleAddTime={(time) => handleAddTime(map, time, addTime)}
+              handleDeleteTime={(time) => handleDeleteTime(map, time, deleteTime)}
+              // setTrigger={setTrigger}
+              // addTime={addTime}
+              // deleteTime={deleteTime}
               />
         </View>
     );

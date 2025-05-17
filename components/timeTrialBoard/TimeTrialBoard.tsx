@@ -3,6 +3,8 @@ import AddTime from "./AddTime";
 import MapTimeContainer from "./MapTimeContainer";
 import { View, StyleSheet, FlatList } from "react-native";
 import { converToMilliseconds } from "@/utils/timeTrialBoardUtils";
+import { useComputed } from "@legendapp/state/react";
+import { state$ } from "@/app/_layout";
 
 interface TimeTrialBoardProp {
     map: string;
