@@ -37,7 +37,7 @@ export default function MapDetailsScreen(){
 
     // Will need to remove this useEffec
     useEffect(()=> {
-      fetchTimes(getTimes, setMapAndTime)
+      fetchTimes(getTimes)
     }, [trigger]);
 
 
