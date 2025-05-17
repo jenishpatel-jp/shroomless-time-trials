@@ -53,7 +53,6 @@ const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( {
                         time={item} 
                         handleDeleteTime={handleDeleteTime} 
                         deleteTime={deleteTime}
-                        map={map}
                         />}
                     keyExtractor={(item) => item}
                 />
