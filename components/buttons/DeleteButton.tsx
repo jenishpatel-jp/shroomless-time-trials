@@ -6,18 +6,18 @@ interface DeleteButtonProps {
     handleDeleteTime: (
         time: string, 
         setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
-        deleteTime: (time: string, callback: () => void) => Promise<void>
+        deleteTime: (time: string) => Promise<void>
     ) => Promise<void>;
-    setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
-    deleteTime: (time: string, callback: () => void) => Promise<void>;
+    deleteTime: (time: string) => Promise<void>;
+    map: string;
 
 }
 
-const DeleteButton: React.FC<DeleteButtonProps> = ( { time, handleDeleteTime, setTrigger, deleteTime} ) => {
+const DeleteButton: React.FC<DeleteButtonProps> = ( { time, handleDeleteTime, deleteTime, map} ) => {
     return (
         <View style={styles.deleteButton}>
             <Pressable
-                onPress={()=> handleDeleteTime(time, setTrigger, deleteTime)}
+                onPress={()=> handleDeleteTime(time, map, deleteTime)}
                 accessibilityRole="button"
                 accessibilityLabel="Delete time"
             >

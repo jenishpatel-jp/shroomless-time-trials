@@ -3,20 +3,19 @@ import { type SQLiteDatabase } from "expo-sqlite";
 export const useDatabase = (db: SQLiteDatabase) => {
 
     // Add a new time to the database
-    const addTime = async (map: string, time: string, callback?: ()=> void) => {
+    const addTime = async (map: string, time: string) => {
         try {
             const result = await db.runAsync(
                 'INSERT INTO stt (map, time) VALUES (?, ?);', [map, time]
             );
             console.log(`Time added successfully with ID: ${result.lastInsertRowId}`);
-            if (callback) callback();
         } catch (error){
             console.error('Error adding time:', error);
         }
     };
 
     // Delete a time from the database
-    const deleteTime = async (time:string, callback?: ()=> void) => {
+    const deleteTime = async (time:string) => {
         try {
             const result = await db.runAsync(
                 `DELETE FROM stt WHERE time = ?`, [time]
@@ -27,8 +26,6 @@ export const useDatabase = (db: SQLiteDatabase) => {
             } else {
                 console.log(`No time with ${time} to delete.`)
             }
-
-            if (callback) callback();
 
         } catch(error){
             console.error('Error deleting the time', error);

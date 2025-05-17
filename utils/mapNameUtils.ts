@@ -39,7 +39,7 @@ export const handleDeleteTime = async(
     map:string,
     time:string,
     // setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
-    deleteTime: (time: string, callback?: () => void) => Promise<void>
+    deleteTime: (time: string) => Promise<void>
 ) => {
     await deleteTime(time);
 

@@ -3,40 +3,38 @@ import AddTime from "./AddTime";
 import MapTimeContainer from "./MapTimeContainer";
 import { View, StyleSheet, FlatList } from "react-native";
 import { converToMilliseconds } from "@/utils/timeTrialBoardUtils";
-import { useComputed } from "@legendapp/state/react";
+import { useComputed } from "@legendapp/state/react"; // need to look into this
 import { state$ } from "@/app/_layout";
 
 interface TimeTrialBoardProp {
     map: string;
-    mapAndTime: Record<string, string[]>;
     handleAddTime: (
         map: string, 
         time:string, 
-        setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
-        addTime: (map: string, time: string, callback: () => void) => Promise<void>
+        addTime: (map: string, time: string) => Promise<void>
     ) => Promise<void>;
     handleDeleteTime: (
         time: string, 
-        setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
-        deleteTime: (time: string, callback: () => void) => Promise<void>
+        deleteTime: (time: string) => Promise<void>
     ) => Promise<void>;
-    setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
-    addTime: (map: string, time: string, callback: () => void) => Promise<void>;
-    deleteTime: (time: string, callback: () => void) => Promise<void>;
+    addTime: (map: string, time: string) => Promise<void>;
+    deleteTime: (time: string) => Promise<void>;
 }
 
 const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( { 
-    map, 
-    mapAndTime, 
+    map,  
     handleAddTime, 
     handleDeleteTime, 
-    setTrigger, 
     addTime,
     deleteTime
 } ) => {
 
-    const sortedTimes = mapAndTime[map]?.sort((a:any, b:any) => converToMilliseconds(a)-converToMilliseconds(b)) || [];
-
+    // Use Legend State to derive sorted times reactively
+    const sortedTimes = useComputed(() => {
+        const times = state$.mapAndTime.get()[map] || [];
+        return [...times].sort((a, b) => converToMilliseconds(a) - converToMilliseconds(b));
+    });
+    
 
     return (
 
@@ -49,12 +47,13 @@ const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( {
                 accessibilityLabel="Time Trial Board Container"
                 >
                 <FlatList 
-                    data={sortedTimes}
-                    renderItem={({item}) => <MapTimeContainer 
+                    data={sortedTimes.get()}
+                    renderItem={({item}) => 
+                    <MapTimeContainer 
                         time={item} 
                         handleDeleteTime={handleDeleteTime} 
-                        setTrigger={setTrigger}
                         deleteTime={deleteTime}
+                        map={map}
                         />}
                     keyExtractor={(item) => item}
                 />
@@ -62,7 +61,6 @@ const TimeTrialBoard: React.FC<TimeTrialBoardProp> = ( {
                 <AddTime 
                     map={map} 
                     handleAddTime={handleAddTime}  
-                    setTrigger={setTrigger}
                     addTime={addTime}
                     />
             </View>

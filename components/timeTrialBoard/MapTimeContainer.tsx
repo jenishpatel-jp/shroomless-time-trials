@@ -7,14 +7,13 @@ interface MapTimeContainerProp {
   time: string;
   handleDeleteTime: (
     time: string, 
-    setTrigger: React.Dispatch<React.SetStateAction<boolean>>,
     deleteTime: (time: string, callback: () => void) => Promise<void>
   ) => Promise<void>;
-  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
   deleteTime: (time: string, callback: () => void) => Promise<void>;
+  map: string;
 }
 
-const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time, handleDeleteTime, setTrigger, deleteTime} ) => {
+const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time, handleDeleteTime, map, deleteTime} ) => {
   return (
     <LinearGradient 
       colors={['#FF1BDC', '#2CBDFE']}
@@ -27,6 +26,7 @@ const MapTimeContainer: React.FC<MapTimeContainerProp> = ( {time, handleDeleteTi
             handleDeleteTime={handleDeleteTime} 
             setTrigger={setTrigger} 
             deleteTime={deleteTime}
+            map={map}
             />
       </View>
     </LinearGradient>
