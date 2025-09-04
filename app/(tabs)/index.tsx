@@ -4,6 +4,8 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { oldMaps } from '@/utils/oldMapUtils';
 import { FlatList } from 'react-native';
 
+// Reverted back to before Legend State was added 
+
 export default function TabOneScreen() {
 
   return (
